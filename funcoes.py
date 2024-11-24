@@ -23,4 +23,11 @@ def remover_item(lista):
     else:
         print(f"'{item}' não encontrado na lista.")
 
-
+def mostrar_lista(lista):
+    """Exibe os itens da lista."""
+    print("\n==== Lista Atual ====")
+    if lista:
+        for i, item in enumerate(lista, start=1):
+            print(f"{i}. {item}")
+    else:
+        print("A lista está vazia.")
