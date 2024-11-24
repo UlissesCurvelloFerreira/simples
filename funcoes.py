@@ -14,4 +14,13 @@ def adicionar_item(lista):
     lista.append(item)
     print(f"'{item}' adicionado à lista.")
 
+def remover_item(lista):
+    """Remove um item da lista."""
+    item = input("Digite o item para remover: ")
+    if item in lista:
+        lista.remove(item)
+        print(f"'{item}' removido da lista.")
+    else:
+        print(f"'{item}' não encontrado na lista.")
+
 
