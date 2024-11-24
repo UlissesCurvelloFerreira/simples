@@ -31,3 +31,9 @@ def mostrar_lista(lista):
             print(f"{i}. {item}")
     else:
         print("A lista está vazia.")
+
+def apagar_lista(lista):
+    """Apaga todos os itens da lista."""
+    lista.clear()
+    print("Lista apagada.")
+
