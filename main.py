@@ -8,8 +8,14 @@ janela.geometry("400x450")
 janela.config(bg="lightblue")  # Definir a cor de fundo da janela
 
 # Layout da interface
+
+# Adicionando um Canvas para a barra horizontal
+canvas = tk.Canvas(janela, width=400, height=30, bg="green", highlightthickness=0)
+canvas.pack()
+
+
 titulo = tk.Label(janela, text="Gerenciador Simples de Lista", font=("Helvetica", 16), bg="lightblue")
-titulo.pack(pady=10)
+titulo.place(relx=0.5, y=15, anchor="center")  # Centraliza o texto na janela
 
 frame = tk.Frame(janela, bg="lightblue")
 frame.pack(pady=10)
