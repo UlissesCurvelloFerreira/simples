@@ -1,39 +1,46 @@
-def exibir_menu():
-    """Exibe o menu principal."""
-    print("\n==== Gerenciador Simples ====")
-    print("1. Adicionar item")
-    print("2. Remover item")
-    print("3. Apagar lista")
-    print("4. Mostrar lista")
-    print("5. Sair")
-    print("===================================")
+import tkinter as tk
+from tkinter import messagebox
 
-def adicionar_item(lista):
+# Lista compartilhada
+lista = []
+
+def adicionar_item(entrada_item, lista_itens):
     """Adiciona um item à lista."""
-    item = input("Digite o item para adicionar: ")
-    lista.append(item)
-    print(f"'{item}' adicionado à lista.")
-
-def remover_item(lista):
-    """Remove um item da lista."""
-    item = input("Digite o item para remover: ")
-    if item in lista:
-        lista.remove(item)
-        print(f"'{item}' removido da lista.")
+    item = entrada_item.get()
+    if item:
+        lista.append(item)
+        atualizar_lista(lista_itens)
+        entrada_item.delete(0, tk.END)
+        messagebox.showinfo("Sucesso", f"'{item}' adicionado à lista.")
     else:
-        print(f"'{item}' não encontrado na lista.")
+        messagebox.showwarning("Aviso", "Digite um item válido.")
 
-def mostrar_lista(lista):
-    """Exibe os itens da lista."""
-    print("\n==== Lista Atual ====")
-    if lista:
-        for i, item in enumerate(lista, start=1):
-            print(f"{i}. {item}")
-    else:
-        print("A lista está vazia.")
+def remover_item(entrada_item, lista_itens):
+    """Remove um item da lista pelo índice."""
+    indice = entrada_item.get()
+    try:
+        indice = int(indice)
+        if 1 <= indice <= len(lista):
+            item = lista.pop(indice - 1)
+            atualizar_lista(lista_itens)
+            entrada_item.delete(0, tk.END)
+            messagebox.showinfo("Sucesso", f"'{item}' removido da lista.")
+        else:
+            messagebox.showerror("Erro", "Índice fora do intervalo.")
+    except ValueError:
+        messagebox.showerror("Erro", "Digite um número válido como índice.")
 
-def apagar_lista(lista):
+def apagar_lista(lista_itens):
     """Apaga todos os itens da lista."""
-    lista.clear()
-    print("Lista apagada.")
+    if lista:
+        lista.clear()
+        atualizar_lista(lista_itens)
+        messagebox.showinfo("Sucesso", "Lista apagada.")
+    else:
+        messagebox.showwarning("Aviso", "A lista já está vazia.")
 
+def atualizar_lista(lista_itens):
+    """Atualiza a exibição da lista na interface."""
+    lista_itens.delete(0, tk.END)
+    for i, item in enumerate(lista, start=1):
+        lista_itens.insert(tk.END, f"{i}. {item}")
