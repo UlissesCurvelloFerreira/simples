@@ -14,7 +14,6 @@ def adicionar_item(entrada_item, lista_itens):
                 lista.append(item)
         atualizar_lista(lista_itens)
         entrada_item.delete(0, tk.END)
-        messagebox.showinfo("Sucesso", f"Itens adicionados à lista.")
     else:
         messagebox.showwarning("Aviso", "Digite um ou mais itens válidos.")
 
@@ -27,8 +26,7 @@ def remover_item(entrada_item, lista_itens):
         indices.sort(reverse=True)  # Remover de trás para frente para evitar erros com índices alterados
         for indice in indices:
             if 1 <= indice <= len(lista):
-                item = lista.pop(indice - 1)
-                messagebox.showinfo("Sucesso", f"'{item}' removido da lista.")
+                lista.pop(indice - 1)
             else:
                 messagebox.showerror("Erro", f"Índice {indice} fora do intervalo.")
         atualizar_lista(lista_itens)
@@ -41,7 +39,6 @@ def apagar_lista(lista_itens):
     if lista:
         lista.clear()
         atualizar_lista(lista_itens)
-        messagebox.showinfo("Sucesso", "Lista apagada.")
     else:
         messagebox.showwarning("Aviso", "A lista já está vazia.")
 

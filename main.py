@@ -43,5 +43,9 @@ lista_itens.pack(pady=10)
 btn_sair = tk.Button(janela, text="Sair", width=10, command=janela.quit)
 btn_sair.pack(pady=10)
 
+# Definindo atalhos de teclado
+janela.bind('<Control-a>', lambda event: adicionar_item(entrada_item, lista_itens))  # Ctrl + A para adicionar
+janela.bind('<Control-x>', lambda event: remover_item(entrada_item, lista_itens))  # Ctrl + X para remover
+
 # Iniciando o loop da interface
 janela.mainloop()
