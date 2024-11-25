@@ -5,22 +5,23 @@ from funcoes import adicionar_item, remover_item, apagar_lista
 janela = tk.Tk()
 janela.title("Gerenciador Simples de Lista")
 janela.geometry("400x450")
+janela.config(bg="lightblue")  # Definir a cor de fundo da janela
 
 # Layout da interface
-titulo = tk.Label(janela, text="Gerenciador Simples de Lista", font=("Helvetica", 16))
+titulo = tk.Label(janela, text="Gerenciador Simples de Lista", font=("Helvetica", 16), bg="lightblue")
 titulo.pack(pady=10)
 
-frame = tk.Frame(janela)
+frame = tk.Frame(janela, bg="lightblue")
 frame.pack(pady=10)
 
-lbl_item = tk.Label(frame, text="Item/Índice:")
+lbl_item = tk.Label(frame, text="Item/Índice:", bg="lightblue")
 lbl_item.grid(row=0, column=0, padx=5, pady=5)
 
 entrada_item = tk.Entry(frame, width=20)
 entrada_item.grid(row=0, column=1, padx=5, pady=5)
 
 # Botões principais
-frame_botoes = tk.Frame(janela)
+frame_botoes = tk.Frame(janela, bg="lightblue")
 frame_botoes.pack(pady=10)
 
 btn_adicionar = tk.Button(frame_botoes, text="Adicionar", width=12, command=lambda: adicionar_item(entrada_item, lista_itens))
@@ -33,7 +34,7 @@ btn_apagar = tk.Button(frame_botoes, text="Apagar Lista", width=12, command=lamb
 btn_apagar.grid(row=0, column=2, padx=5, pady=5)
 
 # Exibição da lista
-lbl_lista = tk.Label(janela, text="Itens na Lista:")
+lbl_lista = tk.Label(janela, text="Itens na Lista:", bg="lightblue")
 lbl_lista.pack(pady=5)
 
 lista_itens = tk.Listbox(janela, width=50, height=15)
